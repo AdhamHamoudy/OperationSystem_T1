@@ -1,7 +1,7 @@
-#include <limits.h>  // For INT_MIN
-#include <stdio.h>   // For printf and fprintf
-#include <stdlib.h>  // For atoi, malloc, free, and srand
-#include <time.h>    // For time (if needed for srand)
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 // Constants for the minimum and maximum values in the array
 #define MIN_VAL -25

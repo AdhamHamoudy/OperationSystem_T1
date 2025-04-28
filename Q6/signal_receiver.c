@@ -1,8 +1,8 @@
-#include <stdio.h>      // for printf(), fflush()
-#include <stdlib.h>     // for exit()
-#include <unistd.h>     // for getpid(), pause(), sleep()
-#include <signal.h>     // for sigaction, SIGUSR1, SIGUSR2, SA_RESTART
-#include <sys/types.h>  // for pid_t
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/types.h>
 
 volatile sig_atomic_t bit_count = 0;
 volatile sig_atomic_t current_byte = 0;
