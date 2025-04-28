@@ -1,0 +1,67 @@
+Q1 - Debugging Crashes and Core Dumps
+
+This part of the project includes three small C programs:
+
+1. divideByZero.c
+   - Purpose: Triggers a divide-by-zero error.
+   - Expected behavior: Generates a segmentation fault and a core dump.
+
+2. stackOverFlow.c
+   - Purpose: Triggers a stack overflow through uncontrolled recursion.
+   - Expected behavior: Causes a segmentation fault and a core dump.
+
+3. undefinedMemory.c
+   - Purpose: Accesses uninitialized memory.
+   - Expected behavior: Causes a segmentation fault and a core dump.
+
+-------------------------------------------------
+Compilation:
+
+To compile all programs, run:
+    make
+
+This will produce the following executables:
+- divideByZero
+- stackOverFlow
+- undefinedMemory
+
+-------------------------------------------------
+Execution:
+
+To allow core dumps:
+    ulimit -c unlimited
+
+Then run:
+    ./divideByZero
+    ./stackOverFlow
+    ./undefinedMemory
+
+Each program will crash and generate a `core` file.
+
+-------------------------------------------------
+Debugging:
+
+To analyze the core dump:
+    gdb ./divideByZero core
+    gdb ./stackOverFlow core
+    gdb ./undefinedMemory core
+
+In GDB, use the `bt` (backtrace) command to identify where the crash occurred.
+
+Example GDB session:
+    (gdb) bt
+
+-------------------------------------------------
+Makefile:
+
+A Makefile is provided to compile and clean the programs easily.
+
+Targets:
+- make
+- make clean
+
+-------------------------------------------------
+Notes:
+
+- Each crash is intentional to practice analyzing core dumps.
+- Make sure `ulimit -c unlimited` is active before running the programs.

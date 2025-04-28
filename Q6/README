@@ -1,0 +1,13 @@
+Q6 - Signal Sender and Receiver
+
+This project contains two programs:
+- signal_receiver: Receives a byte value (0-255) through signals (SIGUSR1 and SIGUSR2).
+- signal_sender: Sends a byte value (0-255) to the receiver using signals.
+
+How to compile:
+    gcc -Wall -Wextra -o signal_receiver signal_receiver.c
+    gcc -Wall -Wextra -o signal_sender signal_sender.c
+
+How to run:
+1. Start ./signal_receiver and note its PID.
+2. Run ./signal_sender and input the receiver's PID and a number (0-255) to send.

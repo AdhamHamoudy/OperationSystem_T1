@@ -1,0 +1,58 @@
+Q7 - Phonebook Management Using Pipes, Fork, and Execve
+
+This project includes two C programs:
+
+1. add2PB
+   - Purpose: Add a new entry to the phonebook file (phonebook.txt).
+   - Usage:
+     ./add2PB "Name,PhoneNumber"
+   - Example:
+     ./add2PB "Micky Mouse,052-1234567"
+
+   - Validation:
+     - The name must consist of letters and spaces.
+     - The phone number must consist of digits and at most one hyphen.
+     - Input must be in the format: "Name,PhoneNumber".
+
+   - Behavior:
+     - Appends the new entry to 'phonebook.txt'.
+     - Prints "Invalid input" if the input is malformed.
+
+2. findPhone
+   - Purpose: Search for a name inside the phonebook and print the corresponding phone number(s).
+   - Usage:
+     ./findPhone "SearchTerm"
+   - Example:
+     ./findPhone "Micky"
+
+   - Behavior:
+     - Connects the following commands using pipe, fork, and execve:
+         cat phonebook.txt | grep <SearchTerm> | awk -F, '{print $2}'
+     - Outputs the phone number(s) of matching entries.
+     - If no match is found, prints nothing.
+
+-------------------------------------------------
+Testing Example:
+
+1. Create an empty phonebook:
+    rm -f phonebook.txt
+    touch phonebook.txt
+
+2. Add entries:
+    ./add2PB "Micky Mouse,052-1234567"
+    ./add2PB "Donald Duck,053-9876543"
+    ./add2PB "Nezer Zaidenberg,054-5531415"
+
+3. Search for entries:
+    ./findPhone "Micky"    → 052-1234567
+    ./findPhone "Duck"     → 053-9876543
+    ./findPhone "Nezer"    → 054-5531415
+
+4. Search for a non-existing name:
+    ./findPhone "Superman" → No output
+
+5. Try invalid input:
+    ./add2PB ",054-1111111" 
+    → Invalid input
+
+-------------------------------------------------
